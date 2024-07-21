@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Mod from "./Mod";
 
 export default function Main(props) {
+  const [inputVal, setInputVal] = useState("");
+  const [mods, setMods] = useState([]);
 
+  const { url } = props;
 
-  
   async function getData(Baseurl, Name, limit = 10) {
-    const mod_ids = {};
+    const mod_ids = [];
     const fullurl = Baseurl + "search?" + `query=${Name}` + `&limit=${limit}`;
     try {
       const response = await fetch(fullurl);
@@ -15,12 +17,11 @@ export default function Main(props) {
       }
 
       const data = await response.json();
-      console.log(data);
 
       const mods = data.hits;
       mods.forEach((mod) => {
         // console.log(mod);
-        mod_ids[mod.project_id] = {
+        mod_ids.push({
           ID: mod.project_id,
           Title: mod.title,
           Type: mod.categories,
@@ -28,7 +29,7 @@ export default function Main(props) {
           Version: mod.version,
           Image: mod.icon_url,
           Desc: mod.description,
-        };
+        });
       });
     } catch (err) {
       console.log(err.message);
@@ -37,9 +38,30 @@ export default function Main(props) {
     return mod_ids;
   }
 
+  async function searchFunction(e) {
+    if (e.key === "Enter") {
+      const modList = await getData(url, inputVal, 5);
+      setMods(await modList);
+    }
+  }
+
+  const changeInputValue = (event) => {
+    setInputVal(event.target.value);
+  };
+
   return (
     <div>
-      <input type="text" className="modInput" placeholder="Search" />
+      <input
+        type="text"
+        className="modInput"
+        placeholder="Search"
+        value={inputVal}
+        onChange={changeInputValue}
+        onKeyDown={searchFunction}
+      />
+      <div className="mods">
+        <Mod mods={mods} />
+      </div>
     </div>
   );
 }

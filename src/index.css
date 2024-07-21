@@ -33,6 +33,7 @@
 
 .modInput:focus {
   outline: none;
+  text-transform: capitalize;
 }
 
 .mods {
@@ -46,7 +47,9 @@
 }
 
 [class^="mod_"] {
-  height: 6rem;
+  width: 70%;
+  height: auto;
+  min-height: 6rem;
   background-color: hsl(0, 0%, 27%);
   border-radius: 1rem;
   display: flex;
@@ -54,13 +57,18 @@
   justify-content: left;
   align-items: center;
   max-width: 90%;
-  max-height: 75%;
+  max-height: 100%;
   position: relative;
 }
 
 .modInfo {
+  width: 75%;
   display: flex;
   flex-direction: column;
+  padding-top: 0.5rem;
+  justify-content: center;
+  align-items: start;
+  text-align: left;
 }
 .modImage {
   width: 4rem;

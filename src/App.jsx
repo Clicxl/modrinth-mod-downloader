@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import Main from './components/Main'
-import './App.css'
+import { useState } from "react";
+import Main from "./components/Main";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const url = "https://api.modrinth.com/v2/";
 
   return (
     <>
-    <Main />
+      <Main url={url}/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
