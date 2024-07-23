@@ -18,9 +18,10 @@
   box-sizing: border-box;
 }
 
-.input {
+#root {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .modInput {
@@ -48,9 +49,10 @@
   height: 50%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
   padding-top: 1rem;
-  margin-left: 1rem;
 }
 
 .Version {
@@ -68,16 +70,15 @@
   font-size: 1.3rem;
   height: 100%;
   width: 100%;
-
 }
 
 .Version select:focus-visible {
   outline: none;
   border: none;
-  color:rgb(200, 209, 238) ;
+  color: rgb(200, 209, 238);
 }
 
-.Version select option{
+.Version select option {
   background-color: rgb(44, 44, 67);
   color: rgb(156, 163, 183);
   margin: 1rem;
@@ -140,3 +141,17 @@
   width: 10rem;
   height: 2.5rem;
 }
+
+.header {
+  width: 80vw;
+  background-color: hsl(240, 21%, 10%);
+  position:relative;
+  left: 10vw;
+  height: auto;
+  display: flex;
+  flex-direction:row ;
+  justify-content: center;
+  border-radius: 0.5rem;
+ 
+}
+

@@ -12,7 +12,7 @@ export default function Main(props) {
   async function searchFunction(e) {
     if (e.key === "Enter") {
       const modList = await getData(url, inputVal, 5);
-      setMods(await modList);
+      setMods(modList);
     }
   }
 
@@ -22,7 +22,7 @@ export default function Main(props) {
 
   return (
     <div>
-      <div className="input">
+      <header className="input header">
         <input
           type="text"
           className="modInput"
@@ -32,7 +32,7 @@ export default function Main(props) {
           onKeyDown={searchFunction}
         />
         <VersionSearch />
-      </div>
+      </header>
       <div className="mods">
         <Mod mods={mods} />
       </div>
